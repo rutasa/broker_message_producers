@@ -24,8 +24,9 @@ class Reader(IReader[Dict[str, Any]]):
         # To avoid this, we are going to fetch chunks of data a fixed size.
         for chunk in pd.read_csv(self._path, chunksize=10):
             for measurement in chunk.itertuples(name="Measurement"):
-                time.sleep(1)  # simulates a sample rate of 1 second for a sensor
                 yield {
-                    "temperature": measurement.temperature,
-                    "timestamp": measurement.timestamp
+                    "monitoringSiteIdentifier": measurement.monitoringSiteIdentifier,
+                    "resultNumberOfSamples": measurement.resultNumberOfSamples,
+                    "procedureLOQValue": measurement.procedureLOQValue,
+                    "resultQualityNumberOfSamplesBelowLOQ": measurement.resultQualityNumberOfSamplesBelowLOQ
                 }
