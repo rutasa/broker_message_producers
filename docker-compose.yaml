@@ -2,7 +2,7 @@ version: '3'
 
 services:
   kafka:
-    image: 'bitnami/kafka:latest'
+    image: 'bitnami/kafka:3.5.1-debian-11-r3'
     user: root
     container_name: broker
     ports:
